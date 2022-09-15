@@ -1,12 +1,12 @@
 <?php
 
 /*
-Plugin Name: Produtos
-Plugin URI: https://agencia.life
-Description: Custom post type and taxonomy
-Version: 1
-Author: Life
-Author URI: https://agencia.life
+Plugin Name: Products Catalogue
+Plugin URI: https://www.katiareis.com
+Description: Custom post type and taxonomy for products catalogue
+Version: 1.0.0
+Author: Kátia Reis
+Author URI: https://www.katiareis.com
 */
 
 // Register Custom Post Type Product
@@ -48,7 +48,7 @@ function create_product_cpt()
 		'labels' => $labels,
 		'menu_icon' => 'dashicons-products',
 		'supports' => array('title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'author', 'comments', 'trackbacks', 'page-attributes', 'custom-fields'),
-		'taxonomies' => array('product-category'),
+		'taxonomies' => array('product_category'),
 		'public' => true,
 		'show_ui' => true,
 		'show_in_menu' => true,
@@ -68,22 +68,22 @@ function create_product_cpt()
 add_action('init', 'create_product_cpt', 0);
 
 
-// Register Taxonomy categoria
-function create_categoria_tax()
+// Register Taxonomy category
+function create_product_category_taxonomy()
 {
 
 	$labels = array(
-		'name'              => _x('catgorias', 'taxonomy general name', 'textdomain'),
-		'singular_name'     => _x('categoria', 'taxonomy singular name', 'textdomain'),
-		'search_items'      => __('Search catgorias', 'textdomain'),
-		'all_items'         => __('All catgorias', 'textdomain'),
-		'parent_item'       => __('Parent categoria', 'textdomain'),
-		'parent_item_colon' => __('Parent categoria:', 'textdomain'),
-		'edit_item'         => __('Edit categoria', 'textdomain'),
-		'update_item'       => __('Update categoria', 'textdomain'),
-		'add_new_item'      => __('Add New categoria', 'textdomain'),
-		'new_item_name'     => __('New categoria Name', 'textdomain'),
-		'menu_name'         => __('categoria', 'textdomain'),
+		'name'              => _x('Products Category', 'taxonomy general name', 'textdomain'),
+		'singular_name'     => _x('Product Category', 'taxonomy singular name', 'textdomain'),
+		'search_items'      => __('Search Product Category', 'textdomain'),
+		'all_items'         => __('All Product Category', 'textdomain'),
+		'parent_item'       => __('Parent Product Category', 'textdomain'),
+		'parent_item_colon' => __('Parent Product Category:', 'textdomain'),
+		'edit_item'         => __('Edit Product Category', 'textdomain'),
+		'update_item'       => __('Update Product Category', 'textdomain'),
+		'add_new_item'      => __('Add New Product Category', 'textdomain'),
+		'new_item_name'     => __('New Product Category Name', 'textdomain'),
+		'menu_name'         => __('Product Category', 'textdomain'),
 	);
 	$args = array(
 		'labels' => $labels,
@@ -99,6 +99,6 @@ function create_categoria_tax()
 		'show_admin_column' => true,
 		'show_in_rest' => true,
 	);
-	register_taxonomy('categoria', array('products'), $args);
+	register_taxonomy('product_category', array('products'), $args);
 }
-add_action('init', 'create_categoria_tax');
+add_action('init', 'create_product_category_taxonomy');
